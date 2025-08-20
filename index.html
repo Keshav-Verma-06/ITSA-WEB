@@ -2,35 +2,24 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ITSA Committee Website</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&amp;display=swap"
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="css/styles.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
     />
-    <link rel="icon" href="images/logo.png" type="image/icon" />
-    <script
-      type="text/javascript"
-      charset="UTF-8"
-      src="https://maps.googleapis.com/maps-api-v3/api/js/58/1a/common.js"
-    ></script>
-    <script
-      type="text/javascript"
-      charset="UTF-8"
-      src="https://maps.googleapis.com/maps-api-v3/api/js/58/1a/util.js"
-    ></script>
+    <link rel="stylesheet" href="css/styles.css" />
   </head>
   <body>
-    <div id="loading-overlay" style="display: none">
+    <div id="loading-overlay">
       <div class="loading-icon">
         <span>I</span>
         <span>T</span>
@@ -43,7 +32,7 @@
       <div class="container">
         <div class="logo-container">
           <a class="navbar-brand" id="navbar-brand" href="#">
-            <img src="images/logo.png" alt="ITSA Logo" height="80" />
+            <img src="images/logo.png" alt="ITSA Logo" />
           </a>
           <div class="sliding-text" id="slidingText">
             Information Technology Student Association
@@ -81,18 +70,18 @@
         </div>
       </div>
     </nav>
-    <br />
+
     <section id="home">
       <div class="container-fluid p-0">
         <div class="image-slider">
           <div class="slider-container" style="transform: translateX(-100%)">
             <img src="images/slider-image1.jpg" alt="Slider Image 1" />
             <img src="images/slider-image2.jpg" alt="Slider Image 2" />
-            <img src="images/slider-image3.jpeg" alt="Slider Image 1" />
-            <img src="images/slider-image4.jpeg" alt="Slider Image 2" />
-            <img src="images/slider-image5.jpeg" alt="Slider Image 1" />
-            <img src="images/slider-image6.jpeg" alt="Slider Image 2" />
-            <img src="images/slider-image7.jpeg" alt="Slider Image 3" />
+            <img src="images/slider-image3.jpeg" alt="Slider Image 3" />
+            <img src="images/slider-image4.jpeg" alt="Slider Image 4" />
+            <img src="images/slider-image5.jpeg" alt="Slider Image 5" />
+            <img src="images/slider-image6.jpeg" alt="Slider Image 6" />
+            <img src="images/slider-image7.jpeg" alt="Slider Image 7" />
           </div>
           <div class="slider-arrow left">❮</div>
           <div class="slider-arrow right">❯</div>
@@ -103,7 +92,6 @@
     <section id="about" class="py-5 visible">
       <div class="container">
         <div class="row align-items-center">
-          <!-- Text Column -->
           <div class="col-md-6">
             <h2 class="mb-4">About Us</h2>
             <p class="lead animate-text delay-1">
@@ -121,17 +109,9 @@
               inspire.
             </p>
           </div>
-          <!-- Video Column -->
           <div class="col-md-6">
             <div class="video-container">
-              <video
-                src="images/video.mp4"
-                width="300px"
-                height="500px "
-                muted=""
-                autoplay=""
-                loop=""
-              ></video>
+              <video src="images/video.mp4" muted autoplay loop></video>
             </div>
           </div>
         </div>
@@ -144,16 +124,15 @@
         <div class="row">
           <div class="col-md-4 mb-4">
             <div class="event-card">
-              <img src="images/poster2.jpg" class="" alt="" />
-              <h5 style="color: #6a11cb">
+              <img src="images/poster2.jpg" alt="Event Poster" />
+              <h6 style="color: #6a11cb">
                 Date:30-09-2024 <br />
                 Time: 4 to 6 pm
-              </h5>
-              <h5>🚀 Coding Basics & Future Paths: A Freshman Guide 🚀</h5>
+              </h6>
+              <h6>Coding Basics & Future Paths: A Freshman Guide</h6>
               <p class="fs-6">
                 Join us to uncover the essentials of the tech world with
                 <b>Shubh Jangam</b>, esteemed alumnus of VIT!<br />
-
                 - Introduction to Various Coding Languages and frameworks .<br />
                 - Strategies for professional networking.<br />
                 - Explore various tech domains and their specific programming
@@ -168,12 +147,12 @@
           </div>
           <div class="col-md-4 mb-4">
             <div class="event-card">
-              <img src="images/poster3.jpg" class="" alt="" />
-              <h5 style="color: #6a11cb">
+              <img src="images/poster3.jpg" alt="Event Poster" />
+              <h6 style="color: #6a11cb">
                 Date:01-10-2024 <br />
                 Time: 4 to 6 pm
-              </h5>
-              <h5>⚔ One Piece - The Grand Tech Quest ⚔</h5>
+              </h6>
+              <h6>⚔ One Piece - The Grand Tech Quest ⚔</h6>
               <p class="fs-6">
                 🎯 What Awaits You:<br />
                 - Reverse Mountain: fruit-hunting challenge. 🍇<br />
@@ -183,8 +162,7 @@
                 The One Piece Is Real!
               </p>
               <a
-                href="https://docs.google.com/forms/d/e/1FAIpQLSeCvdPgiR3GsfU1aiYoyvs-5p9WmUgCwikHk5lD_zbJZOKxJg/viewform
-"
+                href="https://docs.google.com/forms/d/e/1FAIpQLSeCvdPgiR3GsfU1aiYoyvs-5p9WmUgCwikHk5lD_zbJZOKxJg/viewform"
                 class="btn btn-primary"
                 >Register Now</a
               >
@@ -456,7 +434,7 @@
               <div class="card">
                 <img src="img/DocCo.png" class="card-img-top" alt="Srushti" />
                 <div class="card-body text-center">
-                  <h5 class="card-title">Srushti</h5>
+                  <h5 class="card-title">Srushti Padvi</h5>
                   <p class="card-text">Documentation Co-Head</p>
                 </div>
               </div>
@@ -489,45 +467,68 @@
                 </div>
               </div>
             </div>
-
-            <!-- Add more team members here, changing the data-category as needed -->
           </div>
         </div>
       </div>
     </section>
 
-    <section id="contact" class="py-5 bg-light contact-section visible">
+    <section id="contact" class="py-5 contact-section">
       <div class="container">
         <h2 class="text-center mb-5">Get in Touch</h2>
-        <div class="row">
-          <div class="col-md-6 mb-4 contact-details">
+        <div class="row justify-content-center">
+          <div class="col-lg-5 col-md-6 mb-4 contact-details">
             <h3>Location</h3>
-            <p>
-              Vidyalankar Institute of Technology, Wadala (E), Mumbai - 400037
-            </p>
-            <div id="map" class="rounded shadow-sm">
+            <div class="contact-info-item">
+              <div class="contact-icon">
+                <i class="fas fa-map-marker-alt"></i>
+              </div>
+              <div class="contact-text">
+                <p>
+                  Vidyalankar Institute of Technology, Wadala (E), Mumbai -
+                  400037
+                </p>
+              </div>
+            </div>
+
+            <div id="map" class="rounded shadow-sm mt-4">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1885.9786966006764!2d72.86969633859613!3d19.021599045542978!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7cf3949dda405%3A0xefd46c9d73152f82!2sVIDYALANKAR%20INSTITUTE%20OF%20TECHNOLOGY%2C%20Mumbai%2C%20Maharashtra%20400037!5e0!3m2!1sen!2sin!4v1724092507989!5m2!1sen!2sin"
-                width="400"
-                height="300"
-                style="border: 0"
                 allowfullscreen=""
                 loading="lazy"
                 referrerpolicy="no-referrer-when-downgrade"
               ></iframe>
             </div>
           </div>
-          <br />
-          <br />
-          <div class="col-md-6 mb-4 contact-details">
+
+          <div
+            class="col-lg-1 d-none d-lg-flex align-items-center justify-content-center"
+          >
+            <div class="divider-vertical"></div>
+          </div>
+
+          <div class="col-lg-5 col-md-6 contact-details">
             <h3>Contact Details</h3>
 
-            <p>
-              Publicity Team:<br />
-              Vighnarajendra kakde : 83560 09186
-            </p>
+            <div class="contact-info-item">
+              <div class="contact-icon">
+                <i class="fas fa-users"></i>
+              </div>
+              <div class="contact-text">
+                <p>
+                  <strong>Publicity Team:</strong><br />Aditya Sarkate: 70584
+                  07325
+                </p>
+              </div>
+            </div>
 
-            <p><strong>Email:</strong>itsa.vidyalankar@gmail.com</p>
+            <div class="contact-info-item">
+              <div class="contact-icon">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div class="contact-text">
+                <p><strong>Email:</strong><br />itsa.vidyalankar@gmail.com</p>
+              </div>
+            </div>
 
             <h3 class="mt-5">Connect with Us</h3>
             <div class="social-media-icons">
@@ -560,7 +561,6 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY"></script>
     <script src="js/scripts.js"></script>
   </body>
 </html>
