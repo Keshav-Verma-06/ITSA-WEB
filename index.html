@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <title>ITSA Committee Website</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <link rel="icon" href="images/logo.png" type="image/icon" />
+    <script
+      type="text/javascript"
+      charset="UTF-8"
+      src="https://maps.googleapis.com/maps-api-v3/api/js/58/1a/common.js"
+    ></script>
+    <script
+      type="text/javascript"
+      charset="UTF-8"
+      src="https://maps.googleapis.com/maps-api-v3/api/js/58/1a/util.js"
+    ></script>
+  </head>
+  <body>
+    <div id="loading-overlay" style="display: none">
+      <div class="loading-icon">
+        <span>I</span>
+        <span>T</span>
+        <span>S</span>
+        <span>A</span>
+      </div>
+    </div>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+      <div class="container">
+        <div class="logo-container">
+          <a class="navbar-brand" id="navbar-brand" href="#">
+            <img src="images/logo.png" alt="ITSA Logo" height="80" />
+          </a>
+          <div class="sliding-text" id="slidingText">
+            Information Technology Student Association
+          </div>
+        </div>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#home">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#about">About Us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#events">Events</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#team">Our Team</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#contact">Contact Us</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <br />
+    <section id="home">
+      <div class="container-fluid p-0">
+        <div class="image-slider">
+          <div class="slider-container" style="transform: translateX(-100%)">
+            <img src="images/slider-image1.jpg" alt="Slider Image 1" />
+            <img src="images/slider-image2.jpg" alt="Slider Image 2" />
+            <img src="images/slider-image3.jpeg" alt="Slider Image 1" />
+            <img src="images/slider-image4.jpeg" alt="Slider Image 2" />
+            <img src="images/slider-image5.jpeg" alt="Slider Image 1" />
+            <img src="images/slider-image6.jpeg" alt="Slider Image 2" />
+            <img src="images/slider-image7.jpeg" alt="Slider Image 3" />
+          </div>
+          <div class="slider-arrow left">❮</div>
+          <div class="slider-arrow right">❯</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="py-5 visible">
+      <div class="container">
+        <div class="row align-items-center">
+          <!-- Text Column -->
+          <div class="col-md-6">
+            <h2 class="mb-4">About Us</h2>
+            <p class="lead animate-text delay-1">
+              Welcome to the Itsa Committee! We are a dynamic tech committee
+              dedicated to bridging the gap between technology and creativity.
+              Our mission is to provide students with invaluable knowledge and
+              hands-on experience through a diverse range of tech events and
+              seminars featuring industry experts.
+            </p>
+            <p class="animate-text delay-2">
+              Our vibrant team of tech enthusiasts is committed to merging
+              technology with creativity, making learning both engaging and
+              enjoyable. From insightful seminars to innovative tech games, we
+              strive to create experiences that not only educate but also
+              inspire.
+            </p>
+          </div>
+          <!-- Video Column -->
+          <div class="col-md-6">
+            <div class="video-container">
+              <video
+                src="images/video.mp4"
+                width="300px"
+                height="500px "
+                muted=""
+                autoplay=""
+                loop=""
+              ></video>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="events" class="py-5 bg-light visible">
+      <div class="container">
+        <h2 class="text-center mb-4">Upcoming Events</h2>
+        <div class="row">
+          <div class="col-md-4 mb-4">
+            <div class="event-card">
+              <img src="images/poster2.jpg" class="" alt="" />
+              <h5 style="color: #6a11cb">
+                Date:30-09-2024 <br />
+                Time: 4 to 6 pm
+              </h5>
+              <h5>🚀 Coding Basics & Future Paths: A Freshman Guide 🚀</h5>
+              <p class="fs-6">
+                Join us to uncover the essentials of the tech world with
+                <b>Shubh Jangam</b>, esteemed alumnus of VIT!<br />
+
+                - Introduction to Various Coding Languages and frameworks .<br />
+                - Strategies for professional networking.<br />
+                - Explore various tech domains and their specific programming
+                language needs.<br />
+              </p>
+              <a
+                href="https://forms.gle/NJE1and5Fmo5k81E6"
+                class="btn btn-primary"
+                >Register Now</a
+              >
+            </div>
+          </div>
+          <div class="col-md-4 mb-4">
+            <div class="event-card">
+              <img src="images/poster3.jpg" class="" alt="" />
+              <h5 style="color: #6a11cb">
+                Date:01-10-2024 <br />
+                Time: 4 to 6 pm
+              </h5>
+              <h5>⚔ One Piece - The Grand Tech Quest ⚔</h5>
+              <p class="fs-6">
+                🎯 What Awaits You:<br />
+                - Reverse Mountain: fruit-hunting challenge. 🍇<br />
+                - Sky Island: Programming and power-ups! ⛅💻<br />
+                - Enies Lobby: The Tower of Trials 🏢<br />
+                - Raftel: The final challenge 🗺🔐<br />
+                The One Piece Is Real!
+              </p>
+              <a
+                href="https://docs.google.com/forms/d/e/1FAIpQLSeCvdPgiR3GsfU1aiYoyvs-5p9WmUgCwikHk5lD_zbJZOKxJg/viewform
+"
+                class="btn btn-primary"
+                >Register Now</a
+              >
+            </div>
+          </div>
+          <div class="col-md-4 mb-4">
+            <div class="event-card">
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <h3 style="color: #6a11cb">Stay Tuned for more!!</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="team" class="py-5 visible">
+      <div class="container">
+        <h2 class="text-center mb-4">Our Team</h2>
+        <div class="d-flex justify-content-center mb-4">
+          <div class="team-categories">
+            <button class="btn btn-category active" data-category="Convener">
+              Convener
+            </button>
+            <button class="btn btn-category" data-category="HOD">H.O.D</button>
+            <button class="btn btn-category" data-category="DAO">D.A.O</button>
+            <button class="btn btn-category" data-category="Presidents">
+              Presidents
+            </button>
+            <button class="btn btn-category" data-category="Technical">
+              Technical
+            </button>
+            <button class="btn btn-category" data-category="Events">
+              Events
+            </button>
+            <button class="btn btn-category" data-category="Publicity">
+              Publicity
+            </button>
+            <button class="btn btn-category" data-category="Content Creation">
+              Content Creation
+            </button>
+            <button class="btn btn-category" data-category="Documentation">
+              Documentation
+            </button>
+            <button class="btn btn-category" data-category="Creatives">
+              Creatives
+            </button>
+          </div>
+        </div>
+
+        <div class="team-members">
+          <div class="row">
+            <div class="col-md-4 team-member active" data-category="Convener">
+              <div class="card">
+                <img
+                  src="img/Convener.png"
+                  class="card-img-top"
+                  alt="Prof. Rohit Barve"
+                />
+                <div class="card-body text-center">
+                  <h5 class="card-title">Prof. Rohit Barve</h5>
+                  <p class="card-text">Convener</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4 team-member" data-category="HOD">
+              <div class="card">
+                <img
+                  src="img/HOD.png"
+                  class="card-img-top"
+                  alt="Dr. Vidya Chitre"
+                />
+                <div class="card-body text-center">
+                  <h5 class="card-title">Dr. Vidya Chitre</h5>
+                  <p class="card-text">H.O.D</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4 team-member" data-category="DAO">
+              <div class="card">
+                <img
+                  src="img/DAO.png"
+                  class="card-img-top"
+                  alt="Dr. Sushopti Gawade"
+                />
+                <div class="card-body text-center">
+                  <h5 class="card-title">Dr. Sushopti Gawade</h5>
+                  <p class="card-text">D.A.O</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4 team-member" data-category="Presidents">
+              <div class="card">
+                <img
+                  src="img/President.png"
+                  class="card-img-top"
+                  alt="Chaitrali Mithbawkar"
+                />
+                <div class="card-body text-center">
+                  <h5 class="card-title">Chaitrali Mithbawkar</h5>
+                  <p class="card-text">President</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4 team-member" data-category="Presidents">
+              <div class="card">
+                <img
+                  src="img/VPresident.png"
+                  class="card-img-top"
+                  alt="Maheshwaree Talekar"
+                />
+                <div class="card-body text-center">
+                  <h5 class="card-title">Maheshwaree Talekar</h5>
+                  <p class="card-text">Vice-President</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4 team-member" data-category="Technical">
+              <div class="card">
+                <img
+                  src="img/TechnicalHead.png"
+                  class="card-img-top"
+                  alt="Keshav Verma"
+                />
+                <div class="card-body text-center">
+                  <h5 class="card-title">Keshav Verma</h5>
+                  <p class="card-text">Technical Head</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4 team-member" data-category="Technical">
+              <div class="card">
+                <img
+                  src="img/TechnicalCo.png"
+                  class="card-img-top"
+                  alt="Omprakash Maurya"
+                />
+                <div class="card-body text-center">
+                  <h5 class="card-title">Omprakash Maurya</h5>
+                  <p class="card-text">Technical Co-Head</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4 team-member" data-category="Events">
+              <div class="card">
+                <img
+                  src="img/EventCo1.png"
+                  class="card-img-top"
+                  alt="Prem yelwande"
+                />
+                <div class="card-body text-center">
+                  <h5 class="card-title">Prem yelwande</h5>
+                  <p class="card-text">Events Co-Head</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4 team-member" data-category="Events">
+              <div class="card">
+                <img
+                  src="img/EventsHead.png"
+                  class="card-img-top"
+                  alt="Varennya Pophali"
+                />
+                <div class="card-body text-center">
+                  <h5 class="card-title">Varennya Pophali</h5>
+                  <p class="card-text">Events Head</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4 team-member" data-category="Events">
+              <div class="card">
+                <img
+                  src="img/EventCo2.png"
+                  class="card-img-top"
+                  alt="Vedant Puntambekar"
+                />
+                <div class="card-body text-center">
+                  <h5 class="card-title">Vedant Puntambekar</h5>
+                  <p class="card-text">Events Co-Head</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4 team-member" data-category="Publicity">
+              <div class="card">
+                <img
+                  src="img/PublicityHead.png"
+                  class="card-img-top"
+                  alt="Aditya Sarkate"
+                />
+                <div class="card-body text-center">
+                  <h5 class="card-title">Aditya Sarkate</h5>
+                  <p class="card-text">Publicity Head</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4 team-member" data-category="Publicity">
+              <div class="card">
+                <img
+                  src="img/PublicityCo.png"
+                  class="card-img-top"
+                  alt="Niranjana Chavan"
+                />
+                <div class="card-body text-center">
+                  <h5 class="card-title">Niranjana Chavan</h5>
+                  <p class="card-text">Publicity Co-Head</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4 team-member" data-category="Content Creation">
+              <div class="card">
+                <img
+                  src="img/CC_Head.png"
+                  class="card-img-top"
+                  alt="Abedan Biswal"
+                />
+                <div class="card-body text-center">
+                  <h5 class="card-title">Abedan Biswal</h5>
+                  <p class="card-text">Content Creation Head</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4 team-member" data-category="Content Creation">
+              <div class="card">
+                <img
+                  src="img/CC_Co.png"
+                  class="card-img-top"
+                  alt="Atharv Ghorpade"
+                />
+                <div class="card-body text-center">
+                  <h5 class="card-title">Atharv Ghorpade</h5>
+                  <p class="card-text">Content Creation Co-Head</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4 team-member" data-category="Documentation">
+              <div class="card">
+                <img
+                  src="img/DocHead.png"
+                  class="card-img-top"
+                  alt="Pooja Divekar"
+                />
+                <div class="card-body text-center">
+                  <h5 class="card-title">Pooja Divekar</h5>
+                  <p class="card-text">Documentation Head</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4 team-member" data-category="Documentation">
+              <div class="card">
+                <img src="img/DocCo.png" class="card-img-top" alt="Srushti" />
+                <div class="card-body text-center">
+                  <h5 class="card-title">Srushti</h5>
+                  <p class="card-text">Documentation Co-Head</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4 team-member" data-category="Creatives">
+              <div class="card">
+                <img
+                  src="img/CreativeHead.png"
+                  class="card-img-top"
+                  alt="Vismaya katkar"
+                />
+                <div class="card-body text-center">
+                  <h5 class="card-title">Vismaya katkar</h5>
+                  <p class="card-text">Creatives Head</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4 team-member" data-category="Creatives">
+              <div class="card">
+                <img
+                  src="img/CreativesCo.png"
+                  class="card-img-top"
+                  alt="Gayatri Chand"
+                />
+                <div class="card-body text-center">
+                  <h5 class="card-title">Gayatri Chand</h5>
+                  <p class="card-text">Creatives Co-Head</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Add more team members here, changing the data-category as needed -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="py-5 bg-light contact-section visible">
+      <div class="container">
+        <h2 class="text-center mb-5">Get in Touch</h2>
+        <div class="row">
+          <div class="col-md-6 mb-4 contact-details">
+            <h3>Location</h3>
+            <p>
+              Vidyalankar Institute of Technology, Wadala (E), Mumbai - 400037
+            </p>
+            <div id="map" class="rounded shadow-sm">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1885.9786966006764!2d72.86969633859613!3d19.021599045542978!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7cf3949dda405%3A0xefd46c9d73152f82!2sVIDYALANKAR%20INSTITUTE%20OF%20TECHNOLOGY%2C%20Mumbai%2C%20Maharashtra%20400037!5e0!3m2!1sen!2sin!4v1724092507989!5m2!1sen!2sin"
+                width="400"
+                height="300"
+                style="border: 0"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+              ></iframe>
+            </div>
+          </div>
+          <br />
+          <br />
+          <div class="col-md-6 mb-4 contact-details">
+            <h3>Contact Details</h3>
+
+            <p>
+              Publicity Team:<br />
+              Vighnarajendra kakde : 83560 09186
+            </p>
+
+            <p><strong>Email:</strong>itsa.vidyalankar@gmail.com</p>
+
+            <h3 class="mt-5">Connect with Us</h3>
+            <div class="social-media-icons">
+              <a
+                href="https://www.linkedin.com/company/itsa-vit/"
+                target="_blank"
+                class="social-icon"
+                ><i class="fab fa-linkedin-in"></i
+              ></a>
+              <a
+                href="https://www.whatsapp.com"
+                target="_blank"
+                class="social-icon"
+                ><i class="fab fa-whatsapp"></i
+              ></a>
+              <a
+                href="https://www.instagram.com/itsa.vit/"
+                target="_blank"
+                class="social-icon"
+                ><i class="fab fa-instagram"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="bg-dark text-white text-center py-3">
+      <p>© 2024 ITSA. All rights reserved.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY"></script>
+    <script src="js/scripts.js"></script>
+  </body>
+</html>
