@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   const sections = document.querySelectorAll(
-    "#about, #events, #team, #contact"
+    "#about, #events-glimpse, #events, #team, #contact"
   );
   const options = {
     root: null,
@@ -116,4 +116,113 @@ document.addEventListener("DOMContentLoaded", function () {
       slidingText.style.maxWidth = "0";
       slidingText.style.opacity = "0";
     });
+
+  // Event Carousel Functionality
+  function initializeEventCarousels() {
+    const carousels = document.querySelectorAll(".event-carousel");
+    
+    carousels.forEach((carousel) => {
+      const container = carousel.querySelector(".event-carousel-container");
+      const items = container.querySelectorAll(".event-carousel-item");
+      const leftArrow = carousel.querySelector(".event-carousel-arrow-left");
+      const rightArrow = carousel.querySelector(".event-carousel-arrow-right");
+      const indicatorsContainer = carousel.querySelector(".event-carousel-indicators");
+      
+      if (items.length === 0) return;
+      
+      let currentIndex = 0;
+      
+      // Create indicators
+      items.forEach((_, index) => {
+        const indicator = document.createElement("div");
+        indicator.classList.add("event-carousel-indicator");
+        if (index === 0) indicator.classList.add("active");
+        indicator.addEventListener("click", () => {
+          currentIndex = index;
+          updateCarousel();
+        });
+        indicatorsContainer.appendChild(indicator);
+      });
+      
+      // Hide arrows if only one item
+      if (items.length <= 1) {
+        if (leftArrow) leftArrow.style.display = "none";
+        if (rightArrow) rightArrow.style.display = "none";
+        if (indicatorsContainer) indicatorsContainer.style.display = "none";
+        return;
+      }
+      
+      function updateCarousel() {
+        container.style.transform = `translateX(-${currentIndex * 100}%)`;
+        
+        // Update indicators
+        const indicators = indicatorsContainer.querySelectorAll(".event-carousel-indicator");
+        indicators.forEach((indicator, index) => {
+          if (index === currentIndex) {
+            indicator.classList.add("active");
+          } else {
+            indicator.classList.remove("active");
+          }
+        });
+      }
+      
+      function showNext() {
+        currentIndex = (currentIndex + 1) % items.length;
+        updateCarousel();
+      }
+      
+      function showPrev() {
+        currentIndex = (currentIndex - 1 + items.length) % items.length;
+        updateCarousel();
+      }
+      
+      if (leftArrow) {
+        leftArrow.addEventListener("click", () => {
+          clearInterval(carousel.slideInterval);
+          showPrev();
+          startAutoSlide();
+        });
+      }
+      
+      if (rightArrow) {
+        rightArrow.addEventListener("click", () => {
+          clearInterval(carousel.slideInterval);
+          showNext();
+          startAutoSlide();
+        });
+      }
+      
+      function startAutoSlide() {
+        if (items.length > 1) {
+          carousel.slideInterval = setInterval(showNext, 6000);
+        }
+      }
+      
+      // Pause on hover
+      carousel.addEventListener("mouseenter", () => {
+        if (carousel.slideInterval) {
+          clearInterval(carousel.slideInterval);
+        }
+      });
+      
+      carousel.addEventListener("mouseleave", () => {
+        startAutoSlide();
+      });
+      
+      // Start auto-slide
+      startAutoSlide();
+    });
+  }
+  
+  // Initialize carousels when DOM is ready
+  initializeEventCarousels();
+  
+  // Re-initialize if new carousels are added dynamically
+  const eventsGlimpseSection = document.getElementById("events-glimpse");
+  if (eventsGlimpseSection) {
+    const observer = new MutationObserver(() => {
+      initializeEventCarousels();
+    });
+    observer.observe(eventsGlimpseSection, { childList: true, subtree: true });
+  }
 });

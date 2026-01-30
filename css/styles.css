@@ -155,6 +155,236 @@ body {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+/* Events Glimpse Section Styles */
+#events-glimpse {
+  background-color: #ffffff;
+}
+
+#events-glimpse h2 {
+  color: #007bff;
+  font-weight: 700;
+  position: relative;
+  padding-bottom: 15px;
+}
+
+#events-glimpse h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(45deg, #6a11cb, #2575fc);
+  border-radius: 2px;
+}
+
+.event-glimpse-card-wrapper {
+  margin-bottom: 30px;
+}
+
+.event-glimpse-card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.event-glimpse-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.event-glimpse-media {
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+  position: relative;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+/* Event Carousel Styles */
+.event-carousel {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.event-carousel-container {
+  display: flex;
+  transition: transform 1s ease-in-out;
+  height: 100%;
+}
+
+.event-carousel-item {
+  min-width: 100%;
+  height: 100%;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.event-carousel-item img,
+.event-carousel-item video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.event-carousel-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.5rem;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 10px 15px;
+  cursor: pointer;
+  z-index: 10;
+  transition: background-color 0.3s ease;
+  border-radius: 4px;
+  user-select: none;
+}
+
+.event-carousel-arrow:hover {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.event-carousel-arrow-left {
+  left: 10px;
+}
+
+.event-carousel-arrow-right {
+  right: 10px;
+}
+
+.event-carousel-indicators {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 10;
+}
+
+.event-carousel-indicator {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.event-carousel-indicator.active {
+  background-color: white;
+  transform: scale(1.2);
+}
+
+.event-glimpse-content {
+  padding: 25px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.event-glimpse-header {
+  margin-bottom: 15px;
+}
+
+.event-glimpse-badge {
+  display: inline-block;
+  background: linear-gradient(45deg, #6a11cb, #2575fc);
+  color: white;
+  padding: 5px 15px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 10px;
+}
+
+.event-glimpse-title {
+  color: #1a1a1a;
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.event-glimpse-subtitle {
+  color: #666;
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 0;
+}
+
+.event-glimpse-description {
+  margin-bottom: 20px;
+  flex: 1;
+}
+
+.event-glimpse-description p {
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+.event-glimpse-features {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.event-glimpse-features li {
+  color: #555;
+  padding: 5px 0;
+  display: flex;
+  align-items: center;
+}
+
+.event-glimpse-features li i {
+  color: #2575fc;
+  margin-right: 10px;
+  font-size: 14px;
+}
+
+.event-glimpse-details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  padding-top: 15px;
+  border-top: 1px solid #e9ecef;
+}
+
+.event-detail-item {
+  display: flex;
+  align-items: center;
+  color: #666;
+  font-size: 14px;
+}
+
+.event-detail-item i {
+  color: #007bff;
+  margin-right: 8px;
+  font-size: 16px;
+}
+
+.event-detail-item.prize-pool {
+  color: #ff6b35;
+  font-weight: 600;
+}
+
+.event-detail-item.prize-pool i {
+  color: #ff6b35;
+}
+
 .event-card {
   background-color: #ffffff;
   border-radius: 8px;
@@ -358,6 +588,10 @@ footer {
     display: none !important;
   }
 
+  .event-glimpse-media {
+    height: 280px;
+  }
+
   .contact-info-item {
     flex-direction: column;
     text-align: center;
@@ -396,6 +630,33 @@ footer {
 
   .event-card img {
     height: 200px;
+  }
+
+  .event-glimpse-media {
+    height: 250px;
+  }
+
+  .event-carousel-arrow {
+    font-size: 1.2rem;
+    padding: 8px 12px;
+  }
+
+  .event-carousel-indicator {
+    width: 8px;
+    height: 8px;
+  }
+
+  .event-glimpse-title {
+    font-size: 20px;
+  }
+
+  .event-glimpse-subtitle {
+    font-size: 14px;
+  }
+
+  .event-glimpse-details {
+    flex-direction: column;
+    gap: 10px;
   }
 
   .team-member .card img {
