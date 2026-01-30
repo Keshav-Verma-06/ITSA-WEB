@@ -1,6 +1,6 @@
 // SURGE 2025 Registration System - FIXED VERSION
-const SUPABASE_URL = 'https://jykdeumwnrlpzmciomep.supabase.co';
-const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imp5a2RldW13bnJscHptY2lvbWVwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTg3MjQxMzAsImV4cCI6MjA3NDMwMDEzMH0.mqfzZQPNLY4UVclwBSN1RBh1bSN9G4K5JBMCReK53v4';
+const SUPABASE_URL = 'https://mhgnznjqgxbfrlkrkinj.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1oZ256bmpxZ3hiZnJsa3JraW5qIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njk3NzE3OTEsImV4cCI6MjA4NTM0Nzc5MX0.AgV5rQ6CNyxLGKrn3rHiIaumO4H5K_TO25Zn-WB6T_M';
 
 // Initialize Supabase client
 const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
@@ -92,12 +92,18 @@ document.addEventListener('DOMContentLoaded', function() {
 // Test Supabase connection
 async function testSupabaseConnection() {
     try {
-        const { data, error } = await supabaseClient.from('registration_summary').select('*');
-        if (error) {
-            console.warn('Supabase connection test failed:', error.message);
+        // Test connection by checking if we can access the Supabase instance
+        // Try to query a simple table (one of the event tables) to verify connection
+        const testTable = 'runtime_curse_registrations';
+        const { data, error } = await supabaseClient.from(testTable).select('registration_id').limit(1);
+        
+        if (error && error.code === 'PGRST205') {
+            console.warn('⚠️ Supabase connected, but tables need to be created. Please run the SQL scripts in Supabase.');
+            console.log('📋 See supabase-setup.sql for table creation scripts');
+        } else if (error) {
+            console.warn('⚠️ Supabase connection test failed:', error.message);
         } else {
             console.log('✅ Supabase connection successful');
-            console.log('Current registrations:', data);
         }
     } catch (err) {
         console.warn('⚠️ Supabase connection test failed:', err.message);
