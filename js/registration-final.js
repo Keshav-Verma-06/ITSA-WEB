@@ -6,6 +6,7 @@ const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBh
 const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 // Event configurations with table names
+// Add registrationCap (number) to any event to limit registrations; when reached, event shows "Registration Full"
 const eventConfigs = {
     'runtime-curse': {
         name: 'The Runtime Curse',
@@ -16,7 +17,8 @@ const eventConfigs = {
         theme: 'curse',
         bgColor: '#1a0d2e',
         accentColor: '#e74c3c',
-        emoji: '🕸️'
+        emoji: '🕸️',
+        registrationCap: 30
     },
     'save-child': {
         name: 'Save the Child',
@@ -27,7 +29,8 @@ const eventConfigs = {
         theme: 'horror',
         bgColor: '#2c1810',
         accentColor: '#e67e22',
-        emoji: '🎭'
+        emoji: '🎭',
+        registrationCap: 30
     },
     'derry-deception': {
         name: 'The Derry Deception',
@@ -38,7 +41,8 @@ const eventConfigs = {
         theme: 'deception',
         bgColor: '#0f1419',
         accentColor: '#9b59b6',
-        emoji: '👹'
+        emoji: '👹',
+        registrationCap: 50
     },
     'ctf-cyber': {
         name: 'CTF Cybersecurity',
@@ -51,7 +55,8 @@ const eventConfigs = {
         theme: 'cyber',
         bgColor: '#0d1421',
         accentColor: '#3498db',
-        emoji: '🔒'
+        emoji: '🔒',
+        registrationCap: 30
     },
     'cybercrime-seminar': {
         name: 'Cybercrime Seminar',
@@ -62,12 +67,15 @@ const eventConfigs = {
         theme: 'seminar',
         bgColor: '#1a1a1a',
         accentColor: '#34495e',
-        emoji: '👤'
+        emoji: '👤',
+        registrationCap: 100
     }
 };
 
 let selectedEventId = null;
 let currentMemberCount = 0;
+// Events that have reached registration cap (set by fetchRegistrationCounts)
+const eventsFull = new Set();
 
 // DOM Elements
 const eventCards = document.querySelectorAll('.event-card');
@@ -86,6 +94,7 @@ document.addEventListener('DOMContentLoaded', function() {
     addFormValidation();
     initializeTooltips();
     updateEventCardDisplays();
+    fetchRegistrationCounts();
 
     // Test Supabase connection
     testSupabaseConnection();
@@ -134,8 +143,59 @@ function updateEventCardDisplays() {
     });
 }
 
+// Fetch registration counts and mark events that are full
+async function fetchRegistrationCounts() {
+    const eventsWithCap = Object.entries(eventConfigs).filter(([, c]) => c.registrationCap != null);
+    for (const [eventId, config] of eventsWithCap) {
+        try {
+            const { count, error } = await supabaseClient
+                .from(config.tableName)
+                .select('*', { count: 'exact', head: true });
+            if (!error && count !== null && count >= config.registrationCap) {
+                eventsFull.add(eventId);
+            }
+        } catch (err) {
+            console.warn('Could not fetch count for', eventId, err);
+        }
+    }
+    updateEventCardFullState();
+}
+
+// Show "Registration Full" and disable button for events that have reached cap
+function updateEventCardFullState() {
+    eventCards.forEach(card => {
+        const eventId = card.getAttribute('data-event');
+        const btn = card.querySelector('.select-event-btn');
+        let banner = card.querySelector('.registration-full-banner');
+        if (eventsFull.has(eventId)) {
+            card.classList.add('event-full');
+            if (btn) {
+                btn.disabled = true;
+                btn.textContent = 'Registration Full';
+            }
+            if (!banner) {
+                banner = document.createElement('div');
+                banner.className = 'registration-full-banner';
+                banner.innerHTML = '<span>Registration is full for this event</span>';
+                card.insertBefore(banner, card.firstChild);
+            }
+            banner.style.display = 'block';
+        } else {
+            card.classList.remove('event-full');
+            if (btn) {
+                btn.disabled = false;
+                btn.textContent = 'Select This Event';
+            }
+            if (banner) banner.style.display = 'none';
+        }
+    });
+}
+
 // Event selection functionality
 function selectEvent(eventId) {
+    if (eventsFull.has(eventId)) {
+        return;
+    }
     selectedEventId = eventId;
     const config = eventConfigs[eventId];
 
@@ -327,6 +387,10 @@ if (form) {
     form.addEventListener('submit', function(e) {
         e.preventDefault();
 
+        if (selectedEventId && eventsFull.has(selectedEventId)) {
+            showErrorMessage('Registration is full for this event.');
+            return;
+        }
         if (validateForm()) {
             submitRegistrationToSupabase();
         }
