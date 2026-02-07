@@ -43,9 +43,11 @@ const eventConfigs = {
     'ctf-cyber': {
         name: 'CTF Cybersecurity',
         teamSize: 3,
+        minTeamSize: 2,
+        teamSizeDisplay: '2-3',
         requiresTeam: true,
         tableName: 'ctf_cybersecurity_registrations',
-        description: 'Capture The Flag - Team of 3',
+        description: 'Capture The Flag - Team of 2-3',
         theme: 'cyber',
         bgColor: '#0d1421',
         accentColor: '#3498db',
@@ -118,10 +120,11 @@ function updateEventCardDisplays() {
             const config = eventConfigs[eventId];
             const detailsElement = card.querySelector('.event-details');
             if (detailsElement) {
-                const teamInfo = detailsElement.querySelector('span:first-child');
+                const teamInfo = detailsElement.querySelector('.event-team');
                 if (teamInfo) {
                     if (config.requiresTeam) {
-                        teamInfo.innerHTML = `<i class="fas fa-users"></i> Team of ${config.teamSize}`;
+                        const teamLabel = config.teamSizeDisplay || config.teamSize;
+                        teamInfo.innerHTML = `<i class="fas fa-users"></i> Team of ${teamLabel}`;
                     } else {
                         teamInfo.innerHTML = `<i class="fas fa-user"></i> Individual`;
                     }
@@ -220,6 +223,9 @@ function updateRegistrationForm(config) {
 function generateTeamMemberForms(teamSize) {
     if (!teamMembersContainer) return;
 
+    const config = eventConfigs[selectedEventId];
+    if (!config) return;
+
     teamMembersContainer.innerHTML = '';
     currentMemberCount = 0;
 
@@ -227,12 +233,15 @@ function generateTeamMemberForms(teamSize) {
     const membersNeeded = teamSize - 1;
 
     for (let i = 0; i < membersNeeded; i++) {
-        addMemberForm(i + 2); // Start from member 2 (leader is member 1)
+        const memberNumber = i + 2;
+        // Third member is optional for CTF (minTeamSize 2 = only member 2 required)
+        const isOptional = config.minTeamSize && memberNumber >= config.minTeamSize + 1;
+        addMemberForm(memberNumber, isOptional);
     }
 }
 
-// Add individual member form
-function addMemberForm(memberNumber) {
+// Add individual member form (isOptional: true = no required validation, e.g. CTF third member)
+function addMemberForm(memberNumber, isOptional) {
     const config = eventConfigs[selectedEventId];
     const maxMembers = config.teamSize - 1; // Excluding leader
 
@@ -240,34 +249,38 @@ function addMemberForm(memberNumber) {
 
     currentMemberCount++;
 
+    const req = isOptional ? '' : ' *';
+    const requiredAttr = isOptional ? '' : ' required';
+
     const memberDiv = document.createElement('div');
     memberDiv.className = `member-form theme-${config.theme}`;
     memberDiv.setAttribute('data-member', memberNumber);
+    if (isOptional) memberDiv.setAttribute('data-optional-member', 'true');
 
     memberDiv.innerHTML = `
         <div class="member-header">
-            <h4 class="member-title">${config.emoji} Team Member ${memberNumber}</h4>
+            <h4 class="member-title">${config.emoji} Team Member ${memberNumber}${isOptional ? ' (Optional)' : ''}</h4>
         </div>
 
         <div class="form-row">
             <div class="form-group">
-                <label for="member${memberNumber}Name">Full Name *</label>
-                <input type="text" id="member${memberNumber}Name" name="member${memberNumber}Name" required>
+                <label for="member${memberNumber}Name">Full Name${req}</label>
+                <input type="text" id="member${memberNumber}Name" name="member${memberNumber}Name"${requiredAttr}>
             </div>
             <div class="form-group">
-                <label for="member${memberNumber}Email">Email Address *</label>
-                <input type="email" id="member${memberNumber}Email" name="member${memberNumber}Email" required>
+                <label for="member${memberNumber}Email">Email Address${req}</label>
+                <input type="email" id="member${memberNumber}Email" name="member${memberNumber}Email"${requiredAttr}>
             </div>
         </div>
 
         <div class="form-row">
             <div class="form-group">
-                <label for="member${memberNumber}Phone">Phone Number *</label>
-                <input type="tel" id="member${memberNumber}Phone" name="member${memberNumber}Phone" required>
+                <label for="member${memberNumber}Phone">Phone Number${req}</label>
+                <input type="tel" id="member${memberNumber}Phone" name="member${memberNumber}Phone"${requiredAttr}>
             </div>
             <div class="form-group">
-                <label for="member${memberNumber}Year">Year of Study *</label>
-                <select id="member${memberNumber}Year" name="member${memberNumber}Year" required>
+                <label for="member${memberNumber}Year">Year of Study${req}</label>
+                <select id="member${memberNumber}Year" name="member${memberNumber}Year"${requiredAttr}>
                     <option value="">Select Year</option>
                     <option value="FE">First Year (FE)</option>
                     <option value="SE">Second Year (SE)</option>
@@ -279,8 +292,8 @@ function addMemberForm(memberNumber) {
 
         <div class="form-row">
             <div class="form-group">
-                <label for="member${memberNumber}Branch">Branch *</label>
-                <select id="member${memberNumber}Branch" name="member${memberNumber}Branch" required>
+                <label for="member${memberNumber}Branch">Branch${req}</label>
+                <select id="member${memberNumber}Branch" name="member${memberNumber}Branch"${requiredAttr}>
                     <option value="">Select Branch</option>
                     <option value="CMPN">Computer Engineering (CMPN)</option>
                     <option value="INFT">Information Technology (INFT)</option>
@@ -291,8 +304,8 @@ function addMemberForm(memberNumber) {
                 </select>
             </div>
             <div class="form-group">
-                <label for="member${memberNumber}RollNo">Roll Number *</label>
-                <input type="text" id="member${memberNumber}RollNo" name="member${memberNumber}RollNo" required>
+                <label for="member${memberNumber}RollNo">Roll Number${req}</label>
+                <input type="text" id="member${memberNumber}RollNo" name="member${memberNumber}RollNo"${requiredAttr}>
             </div>
         </div>
     `;
