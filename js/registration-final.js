@@ -18,7 +18,7 @@ const eventConfigs = {
         bgColor: '#1a0d2e',
         accentColor: '#e74c3c',
         emoji: '🕸️',
-        registrationCap: 30
+        registrationCap: 35
     },
     'save-child': {
         name: 'Save the Child',
@@ -30,7 +30,7 @@ const eventConfigs = {
         bgColor: '#2c1810',
         accentColor: '#e67e22',
         emoji: '🎭',
-        registrationCap: 30
+        registrationCap: 35
     },
     'derry-deception': {
         name: 'The Derry Deception',
@@ -56,7 +56,7 @@ const eventConfigs = {
         bgColor: '#0d1421',
         accentColor: '#3498db',
         emoji: '🔒',
-        registrationCap: 30
+        registrationCap: 35
     },
     'cybercrime-seminar': {
         name: 'Cybercrime Seminar',
