@@ -11,9 +11,11 @@ const eventConfigs = {
     'runtime-curse': {
         name: 'The Runtime Curse',
         teamSize: 4,
+        minTeamSize: 2,
+        teamSizeDisplay: '2-4',
         requiresTeam: true,
         tableName: 'runtime_curse_registrations',
-        description: 'Technical Quiz - Team of 4',
+        description: 'Technical Quiz - Team of 2-4',
         theme: 'curse',
         bgColor: '#1a0d2e',
         accentColor: '#e74c3c',
