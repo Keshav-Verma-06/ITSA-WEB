@@ -20,7 +20,7 @@ const eventConfigs = {
         bgColor: '#1a0d2e',
         accentColor: '#e74c3c',
         emoji: '🕸️',
-        registrationCap: 35
+        registrationCap: 0
     },
     'save-child': {
         name: 'Save the Child',
