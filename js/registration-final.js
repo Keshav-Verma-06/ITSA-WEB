@@ -70,7 +70,7 @@ const eventConfigs = {
         bgColor: '#1a1a1a',
         accentColor: '#34495e',
         emoji: '👤',
-        registrationCap: 100
+        registrationCap: 0
     }
 };
 
